@@ -1,0 +1,26 @@
+
+
+[
+    { "id": 1, "img": "logo.png", "category": "veg", "name": "Vegetable Pizza", "ratings": "4.5/5", "price": "$10.99" },
+    { "id": 2, "img": "logo.png", "category": "veg", "name": "Veggie Burger", "ratings": "4.2/5", "price": "$7.99" },
+    { "id": 3, "img": "logo.png", "category": "veg", "name": "Vegetable Pizza", "ratings": "4.5/5", "price": "$10.99" },
+    { "id": 4, "img": "logo.png", "category": "veg", "name": "Veggie Burger", "ratings": "4.2/5", "price": "$7.99" },
+    { "id": 5, "img": "logo.png", "category": "veg", "name": "Vegetable Pizza", "ratings": "4.5/5", "price": "$10.99" },
+    { "id": 6, "img": "logo.png", "category": "veg", "name": "Veggie Burger", "ratings": "4.2/5", "price": "$7.99" },
+    { "id": 7, "img": "logo.png", "category": "veg", "name": "Vegetable Pizza", "ratings": "4.5/5", "price": "$10.99" },
+    { "id": 8, "img": "logo.png", "category": "veg", "name": "Veggie Burger", "ratings": "4.2/5", "price": "$7.99" },
+    { "id": 9, "img": "logo.png", "category": "nonveg", "name": "Chicken Pizza", "ratings": "4.8/5", "price": "$11.99" },
+    { "id": 10, "img": "logo.png", "category": "nonveg", "name": "Chicken Wings", "ratings": "4.6/5", "price": "$8.99" },
+    { "id": 11, "img": "logo.png", "category": "nonveg", "name": "Chicken Pizza", "ratings": "4.8/5", "price": "$11.99" },
+    { "id": 12, "img": "logo.png", "category": "nonveg", "name": "Chicken Wings", "ratings": "4.6/5", "price": "$8.99" },
+    { "id": 13, "img": "logo.png", "category": "nonveg", "name": "Chicken Pizza", "ratings": "4.8/5", "price": "$11.99" },
+    { "id": 14, "img": "logo.png", "category": "nonveg", "name": "Chicken Wings", "ratings": "4.6/5", "price": "$8.99" },
+    { "id": 15, "img": "logo.png", "category": "snack", "name": "Fries", "ratings": "4.3/5", "price": "$3.99" },
+    { "id": 16, "img": "logo.png", "category": "snack", "name": "Spring Rolls", "ratings": "4.0/5", "price": "$5.99" },
+    { "id": 17, "img": "logo.png", "category": "snack", "name": "Fries", "ratings": "4.3/5", "price": "$3.99" },
+    { "id": 18, "img": "logo.png", "category": "snack", "name": "Spring Rolls", "ratings": "4.0/5", "price": "$5.99" },
+    { "id": 19, "img": "logo.png", "category": "snack", "name": "Fries", "ratings": "4.3/5", "price": "$3.99" },
+    { "id": 20, "img": "logo.png", "category": "snack", "name": "Spring Rolls", "ratings": "4.0/5", "price": "$5.99" }
+    
+  ]
+  

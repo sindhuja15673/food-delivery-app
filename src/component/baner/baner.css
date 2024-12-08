@@ -1,0 +1,41 @@
+.baners{
+   
+    padding: 50px 20px;
+    background: url('../../assets/banner.jpg') no-repeat center center/cover;
+    z-index: -1;
+    position: relative;
+    height:450px;
+}
+.baners::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+.baner{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    position: relative;
+}
+.baner p{
+    margin-left: 15px;
+    margin-top: 180px;
+    width: 330px;
+    
+}
+.baner h1{
+    margin-left: 60px;
+    font-size:40px;
+    margin-top: 150px;
+    width: 250px;
+    
+}
+.baner hr{
+    height: 200px;
+    margin-top: 130px;
+}

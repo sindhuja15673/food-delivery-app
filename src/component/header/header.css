@@ -1,0 +1,22 @@
+
+.head{
+    display: flex;
+    gap: 900px;
+    background-color: #ffffff;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+}
+  .head ul{
+    display: flex;
+    gap: 40px;
+    padding: 15px;
+    
+  }
+
+.head ul li{
+    list-style: none;
+    
+}

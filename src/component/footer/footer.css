@@ -1,0 +1,21 @@
+.footer{
+    display: flex;
+    background-color: rgb(244, 252, 250);
+}
+
+.content{
+    padding: 70px;
+}
+.content ul{
+    display: flex;
+    gap: 70px;
+    list-style: none;
+}
+.content p{
+    padding: 5px;
+}
+.map{
+    padding: 50px;
+    height: '400px';
+    width: '100%' ;
+}
