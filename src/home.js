@@ -6,8 +6,6 @@ export default function home() {
     <div>
     <Baner/>
     <Items/>
-    <div>React app</div>
-
     </div>
   )
 }

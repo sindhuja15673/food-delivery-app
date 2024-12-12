@@ -19,3 +19,13 @@
     height: '400px';
     width: '100%' ;
 }
+
+.footer-skeleton {
+    width: 97%;
+    height: 370px;
+    padding: 20px;
+    display: flex;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }

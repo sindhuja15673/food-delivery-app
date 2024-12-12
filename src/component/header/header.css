@@ -20,3 +20,11 @@
     list-style: none;
     
 }
+.cart-count{
+  color: #ffffff;
+  background-color: red;
+  padding: 0 5px;
+  box-shadow: 0 0 6px 3px rgb(238, 237, 237);
+  border-radius: 50%;
+
+}

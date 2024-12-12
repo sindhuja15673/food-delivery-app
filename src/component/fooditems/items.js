@@ -1,65 +1,84 @@
-
-import React, { useState, useEffect, useRef } from 'react';
-import img from '../../assets/logo.png'; // default image
+import React, { useState, useEffect } from 'react';
 import './items.css';
+import axios from 'axios';
+import Scrollbar from '../menu/scrollbar';
+import SkeletonLoading from '../skeletonLoader';  
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Popup from '../menu/popup';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-
-const imageMap = {
-  'logo.png': img,
-};
 export default function Items() {
   const [foodItems, setFoodItems] = useState([]);
-  const scrollContainerRef = useRef();
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedFood, setSelectedFood] = useState([]);
+  const [loading, setLoading] = useState(true); // State for loading
 
   useEffect(() => {
-    fetch('/fooditems.json')  
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedFoodItems = data.map(item => {
-          const price = parseFloat(item.price.replace('$', '').trim()); 
-          return {
-            ...item,
-            img: item.img || img,
-            price: isNaN(price) ? 0.00 : price, 
-          };
-        });
-        setFoodItems(updatedFoodItems);
-      })
-      .catch((error) => console.error('Error fetching food items:', error));
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/products');
+        setFoodItems(res.data);
+        setLoading(false);  
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setLoading(false);  
+      }
+    };
+
+    
+    const timer = setTimeout(() => {
+      fetchProducts();
+    }, 1000);
+
+
+    return () => clearTimeout(timer);
   }, []);
 
-  const scrollLeft = () => {
-    scrollContainerRef.current.scrollBy({
-      left: -200,
-      behavior: 'smooth',
-    });
+  const handleAddClick = (foodItem) => {
+    setSelectedFood(foodItem);
+    setShowPopup(true);
   };
 
-  const scrollRight = () => {
-    scrollContainerRef.current.scrollBy({
-      left: 200,
-      behavior: 'smooth',
-    });
+  const handleAddToCart = () => {
+    setShowPopup(false);
+    toast.success('Items added to cart!');
   };
 
   return (
     <div>
+       {loading ? (
+        <Skeleton height={50} width={250} style={{ marginLeft: 10, marginTop: 10 }} />
+      ) : (
       <h1>Food Items</h1>
-      <div className="scroll-container">
-        <button className="scroll-button left" onClick={scrollLeft}>←</button>
-        <div ref={scrollContainerRef} className="food-container">
-          {foodItems.map((item) => (
-            <div key={item.id} className="food-item">
-              <img src={imageMap[item.img]} alt={item.name} className="food-item-img" />
-              <h2>{item.name}</h2>
-              <p>Ratings</p>
-              <p>${item.price.toFixed(2)}</p>
-              <button>Add</button>
-            </div>
-          ))}
+    )}
+      {showPopup && (
+        <Popup
+          food={selectedFood}
+          foodItems={foodItems}
+          onClose={() => setShowPopup(false)}
+          onAddToCart={handleAddToCart}
+        />
+      )}
+      <ToastContainer />
+      
+      {loading ? (
+        <>
+        <Skeleton height={50} width={250} style={{ marginLeft: 10, marginTop: 10 }} />
+        
+        <div className="food-item-skeleton-container">
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          
         </div>
-        <button className="scroll-button right" onClick={scrollRight}>→</button>
-      </div>
+        </>
+      ) : (
+        <Scrollbar title="Delicious Food" foods={foodItems} onAddClick={handleAddClick} />
+      )}
     </div>
   );
 }

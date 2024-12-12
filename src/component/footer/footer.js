@@ -1,6 +1,8 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
 import './footer.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import locationMarker from '../../assets/location1.png'; 
 
@@ -11,6 +13,7 @@ const Marker = () => (
 );
 
 const SimpleMap = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const defaultProps = {
     center: {
       lat: 11.7480,
@@ -19,7 +22,22 @@ const SimpleMap = () => {
     zoom: 11
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); 
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
+    <>
+      {isLoading ? (
+            <div className='footer-skeleton'>
+              <Skeleton height={350} width={620} style={{ marginLeft: 10 }} />
+              <Skeleton height={350} width={620} style={{ marginLeft: 10 }} />
+            </div>
+          ) : (
     <div className='footer'>
       <div className='content'>
         <ul>
@@ -35,9 +53,10 @@ const SimpleMap = () => {
         <hr></hr>
         <p>Copyright © 2023 All rights are reserved</p>
       </div>
+      
     <div className='map' style={{ height: '300px', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }} // Ensure you have this key set in your .env file
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }} 
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
@@ -48,6 +67,8 @@ const SimpleMap = () => {
       </GoogleMapReact>
     </div>
     </div>
+  )}
+  </>
   );
 };
 

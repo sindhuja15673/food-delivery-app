@@ -6,6 +6,7 @@ import Footer from './component/footer/footer';
 import Menu from './component/menu/menu';
 import Cart from './component/cart/cart';
 import { Provider } from 'react-redux';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './saga/store';
 function App() {
