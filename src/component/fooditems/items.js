@@ -18,7 +18,7 @@ export default function Items() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/products');
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/products`);
         setFoodItems(res.data);
         setLoading(false);  
       } catch (error) {

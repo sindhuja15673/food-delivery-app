@@ -28,3 +28,55 @@
   border-radius: 50%;
 
 }
+
+@media screen and (max-width: 767px) {
+  .head {
+      flex-direction: column; 
+      gap: 20px; 
+      align-items: center; 
+  }
+
+  .logo {
+      margin-left: 0; 
+  }
+
+  .head ul {
+    margin-top: -40px;
+      flex-direction: row; 
+      gap: 10px; 
+  }
+
+  .cart-count {
+      font-size: 14px; 
+  }
+}
+
+/* For medium devices like tablets */
+@media screen and (max-width: 1024px) {
+  .head {
+      gap: 50px; 
+  }
+
+  .head ul {
+      gap: 20px; 
+  }
+
+  .cart-count {
+      font-size: 16px; 
+  }
+}
+
+/* For larger screens like laptops */
+@media screen and (min-width: 1025px) {
+  .head {
+      gap: 900px;
+  }
+
+  .head ul {
+      gap: 40px; 
+  }
+
+  .cart-count {
+      font-size: 18px; 
+  }
+}

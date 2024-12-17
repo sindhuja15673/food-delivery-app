@@ -1,0 +1,25 @@
+/* src/components/FoodItem.css */
+.veg {
+    background-color: rgb(10, 161, 10);
+    color: #ffffff;
+  }
+  
+  .nonveg {
+    background-color: rgb(226, 17, 17);
+    color: #ffffff;
+  }
+  
+  .snack {
+    background-color: rgb(223, 201, 3);
+    color: #ffffff;
+
+  }
+  
+  /* Add more classes as needed */
+  .food-items{
+    display: inline;
+    margin-right: 5px;
+    padding: 1px 3px;
+    border-radius: 50%;
+   
+  }
