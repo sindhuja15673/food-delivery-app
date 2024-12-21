@@ -4,6 +4,7 @@ const cors = require('cors');
 const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 require('dotenv').config();
+const path = require('path');
 
 const app = express();
 
@@ -22,8 +23,22 @@ app.use(express.json()); // Parse JSON bodies
 app.use('/api', productRoutes);
 app.use('/api', paymentRoutes);
 // Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Route to serve index.html for all non-API requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
+
+
+const PORT = process.env.PORT || 5000;
+
+const HOST = '0.0.0.0'; // Bind to all network interfaces
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
+});
+
+
+
 

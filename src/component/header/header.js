@@ -5,9 +5,15 @@ import { useSelector } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import logo from '../../assets/logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FaHome } from "react-icons/fa";
+import { IoFastFood } from "react-icons/io5";
+import { IoMdCart } from "react-icons/io";
 
 export default function Header() {
   const [isLoading, setIsLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cart);
 
   // Calculate the total number of items in the cart
@@ -22,6 +28,13 @@ export default function Header() {
     return () => clearTimeout(timer);
   }, []);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = ()=>{
+    setMenuOpen(false);
+  }
   return (
     <div className='header'>
       <div className='head'>
@@ -30,7 +43,11 @@ export default function Header() {
         ) : (
           <img className='logo' src={logo} alt="Logo" />
         )}
-        <ul>
+        <div className='menu-icon' onClick={toggleMenu}>
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </div>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+       
           {isLoading ? (
             <>
               <Skeleton height={20} width={50} />
@@ -39,11 +56,11 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Link style={{ textDecoration: 'none', color: 'black' }} to='/'><li>Home</li></Link>
-              <Link style={{ textDecoration: 'none', color: 'black' }} to='/menu'><li>Menu</li></Link>
-              <Link style={{ textDecoration: 'none', color: 'black' }} to='/cart'>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/'><li><FaHome />Home</li></Link>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/menu'><li><IoFastFood />Menu</li></Link>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/cart'>
                 <li>
-                  Cart {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+                <IoMdCart />Cart {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                 </li>
               </Link>
             </>

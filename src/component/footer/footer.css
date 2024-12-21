@@ -29,3 +29,62 @@
     background-color: #f4f4f4;
     text-align: center;
   }
+
+
+  @media screen and (max-width: 767px) {
+    .content {
+      padding: 20px 10px;
+    }
+  
+    .footer{
+        display: flex;
+        flex-direction: column;
+    }
+    .content ul {
+      
+      gap: 10px;
+      align-items: center;
+    }
+  
+    .map {
+      height: 250px;
+      padding: 0px;
+
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .content {
+      padding: 30px 15px;
+    }
+  
+    .content ul {
+      gap: 15px;
+      justify-content: center;
+    }
+  
+    .map {
+      height: 300px;
+      padding: 15px;
+    }
+  }
+  
+  @media screen and (min-width: 1025px) {
+    .footer {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .content {
+      padding: 70px;
+    }
+  
+    .content ul {
+      gap: 70px;
+    }
+  
+    .map {
+      height: 400px;
+      padding: 50px;
+    }
+  }

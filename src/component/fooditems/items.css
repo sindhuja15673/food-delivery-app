@@ -86,6 +86,32 @@
 .plus{
   margin-left: 20px;
 }
+
+
+
+@media screen and (max-width: 767px) {
+ .food-item {
+  min-width: 130px;
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 210px;
+  padding: 10px;
+}
+.food-item h2{
+  font-size: 14px;
+}
+.food-item img{
+  width: 130px;
+  height: 80px;
+}
+.food-item p{
+  font-size: 12px;
+}
+
+.add{
+  font-size: 12px;
+}
+}
 /* .quantity-controls {
   background-color: rgb(21, 138, 70);
   width: fit-content;

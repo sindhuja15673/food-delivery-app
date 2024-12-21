@@ -1,3 +1,25 @@
+.slide {
+  position: relative;
+}
+
+.baners,
+.sliders {
+  display: none; /* Initially hide all slides */
+}
+
+.baners.active,
+.sliders.active {
+  display: block; /* Only show the active slide */
+}
+
+
+
+.sliders img{
+  width: 100%;
+  height: 550px;
+}
+
+
 .baners{
    
     padding: 50px 20px;
@@ -54,3 +76,106 @@
     background-color: #f4f4f4;
     text-align: center;
   }
+  .baner img {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+  }
+  
+  .baner img[src] {
+    opacity: 1;
+  }
+  
+
+  
+  @media (max-width: 1200px) {
+    .baner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .baner h1 {
+      font-size: 35px;
+      margin-left: 0;
+      width: 200px;
+      height: 10px;
+      text-align: center;
+    }
+  
+    .baner p {
+      margin-left: 0;
+      width: 200px;
+      text-align: center;
+    }
+  
+    
+    .baner hr {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .baner h1 {
+      font-size: 22px;
+      margin-top: -20px;
+      width: 200px;
+      text-align: start;
+    }
+    .baner p {
+      text-align: start;
+      width: 180px;
+      font-size: 12px;
+      margin-top: -1px;
+      margin-top: 40px;
+    }
+    .baner{
+      height: 10px;
+      
+    }
+    .sliders img{
+      width: 100%;
+      height: 220px;
+    }
+    .baner hr{
+      height: 100px;
+      color: #ffffff;
+      width: 4px;
+      margin-left: 100px;
+    }
+    
+    .baners {
+      height: 120px !important;
+    }
+  
+    .baner-skeleton {
+      height: 400px;
+    }
+    .baneri{
+      width: 150px;
+      margin-top: -150px;
+      margin-left: 170px;
+  }
+  }
+  
+  @media (max-width: 480px) {
+    .baner h1 {
+      font-size: 24px;
+    }
+  
+    .baners {
+      height: 350px;
+    }
+  
+    .baner-skeleton {
+      height: 350px;
+    }
+  }
+
+  
+
+
+
+   
+
+
+
+
+    

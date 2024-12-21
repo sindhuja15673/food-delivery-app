@@ -41,3 +41,6 @@ const ScrollableSection = ({ title, foods, onAddClick }) => {
 };
 
 export default ScrollableSection;
+
+
+
