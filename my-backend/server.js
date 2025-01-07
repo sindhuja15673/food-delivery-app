@@ -3,6 +3,7 @@ const connectDB = require('./db');
 const cors = require('cors');
 const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
+const crusts = require('./routes/crusts');
 require('dotenv').config();
 const path = require('path');
 
@@ -22,6 +23,7 @@ app.use(express.json()); // Parse JSON bodies
 // Use routes
 app.use('/api', productRoutes);
 app.use('/api', paymentRoutes);
+app.use('/api/crusts', crusts);
 // Start the server
 app.use(express.static(path.join(__dirname, '../build')));
 
@@ -32,13 +34,15 @@ app.get('*', (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
-
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 const HOST = '0.0.0.0'; // Bind to all network interfaces
 
 app.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);
 });
 
-
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
 

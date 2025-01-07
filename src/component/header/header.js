@@ -56,9 +56,9 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/'><li><FaHome />Home</li></Link>
-              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/menu'><li><IoFastFood />Menu</li></Link>
-              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black' }} to='/cart'>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black', width:'70px' }} to='/'><li><FaHome />Home</li></Link>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black', width:'70px' }} to='/menu'><li><IoFastFood />Menu</li></Link>
+              <Link onClick={closeMenu} style={{ textDecoration: 'none', color: 'black', width:'70px' }} to='/cart'>
                 <li>
                 <IoMdCart />Cart {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                 </li>

@@ -4,29 +4,11 @@ import './cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, incrementQuantity, decrementQuantity } from '../../saga/action/action';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
-import pizza from '../../assets/pizza.jpg';
-import burger from '../../assets/burger.jpg';
-import chickenpizza from '../../assets/chicken pizza.jpg';
-import wings from '../../assets/chicken wings.jpg';
-import springRolls from '../../assets/spring-rolls.jpg';
-import fries from '../../assets/fries.jpeg';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { loadStripe } from '@stripe/stripe-js'; // Load Stripe library
-import { Helmet } from 'react-helmet';
 import HelmetComponent from '../helmet/helmet';
 
-
-const imageMap = {
-  'logo.png': logo,
-  'pizza.jpg':pizza,
-  'burger.jpg':burger,
-  'chicken pizza.jpg':chickenpizza,
-  'chicken wings.jpg':wings,
-  'spring-rolls.jpg':springRolls,
-  'fries.jpeg':fries
-};
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -63,46 +45,6 @@ const Cart = () => {
   const discount = total * 0.10;
   const finalTotal = total + gst - discount;
 
-// const handleCheckout = async () => {
-//   const cartData = cart.map(item => ({
-//     name: item.name,
-//     price: item.price,
-//     img: item.img,
-//     quantity: item.quantity,
-//   }));
-
-//   console.log('Cart Data:', cartData);  // Debug cart data
-
-//   try {
-
-//     console.log('API Base URL:', process.env.REACT_APP_API_BASE_URL);
-//     console.log('Stripe Public Key:', process.env.REACT_APP_STRIPE_PUBLIC_KEY);
-
-
-//     const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/create-checkout-session`, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ cart: cartData }),
-//     });
-
-//     const session = await response.json();
-//     console.log('Session:', session);  // Debug session data
-
-//     const stripe = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
-//     const { error } = await stripe.redirectToCheckout({
-//       sessionId: session.id,
-//     });
-
-//     if (error) {
-//       console.error('Stripe Checkout Error:', error);
-//     }
-//   } catch (error) {
-//     console.error('Error during checkout:', error);
-//   }
-//   finally {
-//       setIsCheckoutLoading(false); // Stop loading after the request finishes
-//     }
-// };
 const handleCheckout = async () => {
   setIsCheckoutLoading(true); // Start loading when checkout begins
 
@@ -154,7 +96,7 @@ const handleCheckout = async () => {
         ogTitle="Shopping Cart"
         ogDescription="Review and manage your cart items before proceeding to checkout."
         ogUrl="http://192.168.0.107:3000/cart"
-        ogImage="http://192.168.0.107:3000/assets/logo.png"
+        ogImage="http://192.168.0.107:3000/assets/baner-img.png"
         ogImageAlt="Delicious food banner"
         ogImageWidth="300"
         ogImageHeight="200"
@@ -181,7 +123,7 @@ const handleCheckout = async () => {
         ) : (
           cart.map((item, index) => (
             <div key={index} className='cart-item'>
-              <img src={imageMap[item.img]} alt={item.name} />
+              <img src={item.img} alt={item.name} />
               <div className='item-details'>
                 <h3>{item.name}</h3>
                 <p>${parseFloat(item.price).toFixed(2)}</p>
@@ -225,8 +167,6 @@ const handleCheckout = async () => {
               'Proceed to Payment'
             )}
           </button> 
-       
-        
       </div>
         )}
         </div>

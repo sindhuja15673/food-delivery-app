@@ -4,6 +4,7 @@
   align-items: center;
   background-color: #ffffff;
   padding: 0 20px;
+
 }
 
 .logo {
@@ -13,8 +14,7 @@
 
 .nav-links {
   display: flex;
-  gap: 40px;
-  padding: 15px;
+  padding: 1px;
   list-style: none;
 }
 
@@ -47,6 +47,7 @@
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    z-index: 1;
   }
 
   .nav-links.open {

@@ -14,9 +14,9 @@
       "type": "assets/png"
     },
     {
-      "src": "/logo512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/pizza.jpg",
+      "sizes": "600x600",
+      "type": "assets/jpg"
     }
   ]
 }

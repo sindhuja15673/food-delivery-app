@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './popup.css';
+import axios from 'axios';
 import { RiCloseLargeFill } from "react-icons/ri";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../saga/action/action';
@@ -8,9 +9,20 @@ import { addToCart } from '../../saga/action/action';
 export default function Popup({ food, foodItems, onClose, onAddToCart }) {
   const dispatch = useDispatch();
   const [selectedItems, setSelectedItems] = useState([]);
-
-  const similarItems = foodItems.filter(item => item.name === food.name && item.id !== food.id);
-
+  const [crusts, setCrusts] = useState([]);
+  // const similarItems = foodItems.filter(item => item.name === food.name && item.id !== food.id);
+  useEffect(() => {
+    const fetchCrusts = async () => {
+    try {
+    const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/crusts`); // Update with your API endpoint
+    //  const data = await response.json();
+     setCrusts(response.data);
+     } catch (error) {
+     console.error('Error fetching crusts:', error);
+     }
+    };
+     fetchCrusts();
+    }, []);
   const handleSelectItem = (item) => {
     setSelectedItems(prevItems => {
       if (prevItems.includes(item)) {
@@ -38,7 +50,7 @@ export default function Popup({ food, foodItems, onClose, onAddToCart }) {
       <hr></hr>
       <h4>Crusts</h4>
       <div className="container">
-        {similarItems.map((item) => (
+        {crusts.map((item) => (
           <div key={item.id} className={`foods ${selectedItems.includes(item) ? 'selected' : ''}`}>
            
               <h3>{item.name}</h3>
@@ -46,13 +58,13 @@ export default function Popup({ food, foodItems, onClose, onAddToCart }) {
             
             <input 
               type="checkbox" 
-              id={`food-${item.id}`} 
-              name="food" 
+              id={`crust-${item.id}`} 
+              name="crust" 
               value={item.id}
               checked={selectedItems.includes(item)}
               onChange={() => handleSelectItem(item)} 
             />
-            <label htmlFor={`food-${item.id}`}></label>
+            <label htmlFor={`crust-${item.id}`}></label>
             
           </div>
         ))}
@@ -64,7 +76,4 @@ export default function Popup({ food, foodItems, onClose, onAddToCart }) {
     </div>
   );
 }
-
-
-
 
